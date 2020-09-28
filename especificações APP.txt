@@ -1,0 +1,41 @@
+
+
+Aplicativo GPonto
+
+
+Controle de jornada de trabalho e gestão de horas extras e negativas 
+
+- Sistemas de cadastro
+- Sistema de jornada de trabalho
+
+
+
+-> Sistema de cadastro
+
+	- O usuário deve poder fazer login com e-mail e senha.
+	- O usuário deve poder fazer cadastro com nome, e-mail e senha.
+	- O usuário deve poder recuperar senha com e-mail.
+
+-> Sistema de jornada de trabalho
+
+	- O usuário deve poder ver o tempo de trabalho em real time.
+	- O usuário deve ser avisado antes do o seu horário de trabalhado finalizar.
+	- O usuário deve poder visualizar o seu salda de horas.
+
+	- O usário de pode simular o seu horário de trabalho, com hora de entrada e hora de saída.
+		-> O usuário deve poder ver hora que vai gerar infração.
+		-> O usuário deve poder alterar hora de saída e visualizar saldo de horas.
+		-> O usuário somente poderá voltar a trabalhar 11hrs depois da sua última saída.
+		-> O usuário somente poderá voltar a trabalhar 35hrs depois de N dias de trabalho.
+
+	- Registro de ponto
+		-> O usuário deve poder escolher a sua escala 
+		-> O usuário deve poder informar a sua hora de entrada 
+		-> O usário deve poder visualizar o horário de saída
+		-> O usuário deve poder fazer um observação no registro
+		-> O usuário deve poder  fazer o registrar do seu ponto
+		-> O usuário deve poder visualizar os registros feitos
+
+	-> O usuário deve poder visualizar as suas infrações 
+		-> O usuário deve poder fazer obsevações em suas infrações
+
