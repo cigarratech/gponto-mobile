@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+// import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:gponto/utils/app_routes.dart';
 import 'package:gponto/utils/constants.dart';
 
 import '../../components/input.dart';
 import '../../components/button.dart';
 import '../../components/containerClipper.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -25,7 +25,7 @@ class SignInScreen extends StatelessWidget {
                 clipper: ContainerClipper(),
                 child: Container(
                   decoration: BoxDecoration(color: kPrimaryColor),
-                  height: size.height * 0.55,
+                  height: size.height * 0.65,
                 ),
               ),
               Container(
@@ -64,7 +64,7 @@ class SignInScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      'Entrar',
+                      'Cadastro',
                       style: GoogleFonts.inter(
                         textStyle: TextStyle(
                           fontSize: 30,
@@ -72,6 +72,10 @@ class SignInScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
+                    ),
+                    Input(
+                      icon: FeatherIcons.user,
+                      placeholder: 'Nome',
                     ),
                     Input(
                       icon: FeatherIcons.mail,
@@ -89,37 +93,6 @@ class SignInScreen extends StatelessWidget {
             ],
           ),
           Button(),
-          SizedBox(height: kDefaultPadding * 3 / 2),
-          GestureDetector(
-            onTap: () {},
-            child: Text(
-              'Esqueci minha senha',
-              style: GoogleFonts.inter(
-                textStyle: TextStyle(
-                  color: kPrimaryColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-          ),
-          Spacer(),
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed(AppRoutes.SIGNUP);
-            },
-            child: Text(
-              'Criar Conta',
-              style: GoogleFonts.inter(
-                textStyle: TextStyle(
-                  color: kSubtitleTextColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: kDefaultPadding),
         ],
       ),
     );
