@@ -26,8 +26,6 @@ class RecoverPasswordScreen extends StatelessWidget {
         ),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Stack(
             children: [
@@ -99,33 +97,29 @@ class RecoverPasswordScreen extends StatelessWidget {
             ],
           ),
           Spacer(),
-          Expanded(
-            child: Container(
-              alignment: Alignment.center,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushNamed(AppRoutes.CODE_VALIDATOR);
-                },
-                child: Row(
-                  children: [
-                    Text(
-                      'Inserir código',
-                      style: GoogleFonts.inter(
-                        textStyle: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: kPrimaryColor,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 8),
-                    SvgPicture.asset(
-                      'assets/icons/arrow-right.svg',
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRoutes.CODE_VALIDATOR);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Inserir código',
+                  style: GoogleFonts.inter(
+                    textStyle: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
                       color: kPrimaryColor,
                     ),
-                  ],
+                  ),
                 ),
-              ),
+                SizedBox(width: 8),
+                SvgPicture.asset(
+                  'assets/icons/arrow-right.svg',
+                  color: kPrimaryColor,
+                ),
+              ],
             ),
           ),
           Spacer(),
