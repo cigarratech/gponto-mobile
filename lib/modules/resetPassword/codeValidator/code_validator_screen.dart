@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-// import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gponto/utils/app_routes.dart';
+
 import 'package:gponto/utils/constants.dart';
 
-import '../../components/input.dart';
-import '../../components/button.dart';
-import '../../components/containerClipper.dart';
+import '../../../components/input.dart';
+import '../../../components/button.dart';
+import '../../../components/containerClipper.dart';
 
-class SignUpScreen extends StatelessWidget {
+class CodeValidatorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: SvgPicture.asset('assets/icons/arrow-left.svg'),
+        ),
       ),
       body: Column(
         children: [
@@ -25,7 +33,7 @@ class SignUpScreen extends StatelessWidget {
                 clipper: ContainerClipper(),
                 child: Container(
                   decoration: BoxDecoration(color: kPrimaryColor),
-                  height: size.height * 0.65,
+                  height: size.height * 0.55,
                 ),
               ),
               Container(
@@ -64,7 +72,7 @@ class SignUpScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      'Cadastro',
+                      'Inserir Código',
                       style: GoogleFonts.inter(
                         textStyle: TextStyle(
                           fontSize: 30,
@@ -73,26 +81,28 @@ class SignUpScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    SizedBox(height: kDefaultPadding),
                     Input(
-                      icon: FeatherIcons.user,
-                      placeholder: 'Nome',
-                    ),
-                    Input(
-                      icon: FeatherIcons.mail,
+                      icon: FeatherIcons.shield,
                       inputType: TextInputType.emailAddress,
-                      placeholder: 'E-mail',
+                      placeholder: 'Código',
                     ),
-                    Input(
-                      icon: FeatherIcons.lock,
-                      passwordType: true,
-                      placeholder: 'Senha',
+                    SizedBox(height: kDefaultPadding * 3 / 2),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(AppRoutes.CHANGE_PASSWORD);
+                      },
+                      child: Button(
+                        text: 'Validar',
+                      ),
                     ),
                   ],
                 ),
               ),
             ],
           ),
-          Button(),
+          Spacer(),
         ],
       ),
     );

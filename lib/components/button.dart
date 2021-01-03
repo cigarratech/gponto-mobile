@@ -5,6 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:gponto/utils/constants.dart';
 
 class Button extends StatelessWidget {
+  final String text;
+
+  Button({@required this.text});
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -19,12 +23,12 @@ class Button extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               offset: Offset(4, 4),
-              blurRadius: 8,
-              color: kPrimaryColor.withOpacity(.25),
+              blurRadius: 16,
+              color: Colors.black.withOpacity(.25),
             )
           ]),
       child: Text(
-        'Entrar',
+        text,
         style: GoogleFonts.inter(
           fontWeight: FontWeight.w700,
           color: kBackgroundColor,

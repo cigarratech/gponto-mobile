@@ -1,23 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gponto/utils/app_routes.dart';
+
 import 'package:gponto/utils/constants.dart';
 
-import '../../components/input.dart';
-import '../../components/button.dart';
-import '../../components/containerClipper.dart';
+import '../../../components/input.dart';
+import '../../../components/button.dart';
+import '../../../components/containerClipper.dart';
 
-class SignInScreen extends StatelessWidget {
+class RecoverPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: SvgPicture.asset('assets/icons/arrow-left.svg'),
+        ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Stack(
             children: [
@@ -64,7 +74,7 @@ class SignInScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      'Entrar',
+                      'Recuperar senha',
                       style: GoogleFonts.inter(
                         textStyle: TextStyle(
                           fontSize: 30,
@@ -73,53 +83,52 @@ class SignInScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    SizedBox(height: kDefaultPadding),
                     Input(
                       icon: FeatherIcons.mail,
                       inputType: TextInputType.emailAddress,
                       placeholder: 'E-mail',
                     ),
-                    Input(
-                      icon: FeatherIcons.lock,
-                      passwordType: true,
-                      placeholder: 'Senha',
+                    SizedBox(height: kDefaultPadding * 3 / 2),
+                    Button(
+                      text: 'Enviar',
                     ),
                   ],
                 ),
               ),
             ],
           ),
-          Button(),
-          SizedBox(height: kDefaultPadding * 3 / 2),
-          GestureDetector(
-            onTap: () {},
-            child: Text(
-              'Esqueci minha senha',
-              style: GoogleFonts.inter(
-                textStyle: TextStyle(
-                  color: kPrimaryColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
+          Spacer(),
+          Expanded(
+            child: Container(
+              alignment: Alignment.center,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed(AppRoutes.CODE_VALIDATOR);
+                },
+                child: Row(
+                  children: [
+                    Text(
+                      'Inserir código',
+                      style: GoogleFonts.inter(
+                        textStyle: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: kPrimaryColor,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    SvgPicture.asset(
+                      'assets/icons/arrow-right.svg',
+                      color: kPrimaryColor,
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
           Spacer(),
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed(AppRoutes.SIGNUP);
-            },
-            child: Text(
-              'Criar Conta',
-              style: GoogleFonts.inter(
-                textStyle: TextStyle(
-                  color: kSubtitleTextColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: kDefaultPadding),
         ],
       ),
     );
