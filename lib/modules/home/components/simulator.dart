@@ -63,10 +63,7 @@ class Simulator extends StatelessWidget {
               ],
             ),
             Spacer(),
-            IconButton(
-              icon: SvgPicture.asset('assets/icons/chevron-right.svg'),
-              onPressed: () {},
-            ),
+            SvgPicture.asset('assets/icons/chevron-right.svg'),
           ],
         ),
       ),

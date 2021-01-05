@@ -5,4 +5,5 @@ class AppRoutes {
   static const RECOVER_PASSWORD = '/recover-password';
   static const CODE_VALIDATOR = '/code-validator';
   static const CHANGE_PASSWORD = '/change-password';
+  static const RECORS = '/records';
 }

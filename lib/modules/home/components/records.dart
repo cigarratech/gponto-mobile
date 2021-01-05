@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gponto/utils/app_routes.dart';
 import 'package:gponto/utils/constants.dart';
 
 class Records extends StatelessWidget {
@@ -12,7 +13,9 @@ class Records extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).pushNamed(AppRoutes.RECORS);
+      },
       child: Container(
         margin: EdgeInsets.symmetric(
           horizontal: kDefaultPadding,
@@ -63,10 +66,7 @@ class Records extends StatelessWidget {
               ],
             ),
             Spacer(),
-            IconButton(
-              icon: SvgPicture.asset('assets/icons/chevron-right.svg'),
-              onPressed: () {},
-            ),
+            SvgPicture.asset('assets/icons/chevron-right.svg'),
           ],
         ),
       ),
