@@ -8,6 +8,7 @@ import 'modules/register/signUp/signUp_screen.dart';
 import 'modules/resetPassword/recoverPassword/recover_password_screen.dart';
 import 'modules/resetPassword/codeValidator/code_validator_screen.dart';
 import 'modules/resetPassword/changePassword/change_password_screen.dart';
+import 'modules/home/home_screen.dart';
 
 import './utils/app_routes.dart';
 
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: {
-        AppRoutes.HOME: (ctx) => SignInScreen(),
+        AppRoutes.HOME: (ctx) => HomeScreen(),
         AppRoutes.SIGNIN: (ctx) => SignInScreen(),
         AppRoutes.SIGNUP: (ctx) => SignUpScreen(),
         AppRoutes.RECOVER_PASSWORD: (ctx) => RecoverPasswordScreen(),
