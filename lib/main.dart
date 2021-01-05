@@ -10,6 +10,7 @@ import 'modules/resetPassword/codeValidator/code_validator_screen.dart';
 import 'modules/resetPassword/changePassword/change_password_screen.dart';
 import 'modules/home/home_screen.dart';
 import 'modules/records/records_screen.dart';
+import 'modules/simulator/simulator_screen.dart';
 
 import './utils/app_routes.dart';
 
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.CODE_VALIDATOR: (ctx) => CodeValidatorScreen(),
         AppRoutes.CHANGE_PASSWORD: (ctx) => ChangePasswordScreen(),
         AppRoutes.RECORS: (ctx) => RecordsScreen(),
+        AppRoutes.SIMULATOR: (ctx) => SimulatorScreen(),
       },
     );
   }

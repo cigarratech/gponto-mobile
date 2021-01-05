@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gponto/utils/app_routes.dart';
 import 'package:gponto/utils/constants.dart';
 
 class Simulator extends StatelessWidget {
@@ -12,7 +13,9 @@ class Simulator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).pushNamed(AppRoutes.SIMULATOR);
+      },
       child: Container(
         margin: EdgeInsets.symmetric(
           horizontal: kDefaultPadding,

@@ -6,4 +6,5 @@ class AppRoutes {
   static const CODE_VALIDATOR = '/code-validator';
   static const CHANGE_PASSWORD = '/change-password';
   static const RECORS = '/records';
+  static const SIMULATOR = '/simulator';
 }
