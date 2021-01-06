@@ -87,7 +87,8 @@ class InterWordScreen extends StatelessWidget {
           ),
           SizedBox(width: 8),
           SizedBox(height: kDefaultPadding),
-          Divider(color: kSubtitleTextColor),
+          Divider(color: kSubtitleTextColor, thickness: 1),
+          SizedBox(height: kDefaultPadding),
           Container(
             width: double.infinity,
             child: Column(

@@ -18,47 +18,49 @@ class RecordsSimulatorScreen extends StatelessWidget {
         vertical: kDefaultPadding / 2,
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Escala:',
-            style: GoogleFonts.inter(
-              textStyle: TextStyle(
-                fontSize: 14,
-                color: kTextColor,
-                fontWeight: FontWeight.w400,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Escala:',
+                style: GoogleFonts.inter(
+                  textStyle: TextStyle(
+                    fontSize: 14,
+                    color: kTextColor,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
               ),
-            ),
-          ),
-          SizedBox(height: 4),
-          Container(
-            height: 50,
-            padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Expanded(
-              child: Row(
-                children: [
-                  Text(
-                    '08:48 - 1h Intervalo',
-                    style: GoogleFonts.inter(
-                      textStyle: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: kTextColor,
+              SizedBox(height: 4),
+              Container(
+                height: 50,
+                padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      '08:48 - 1h Intervalo',
+                      style: GoogleFonts.inter(
+                        textStyle: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: kTextColor,
+                        ),
                       ),
                     ),
-                  ),
-                  Spacer(),
-                  Icon(
-                    FeatherIcons.chevronDown,
-                    color: kLightTextColor,
-                  )
-                ],
+                    Spacer(),
+                    Icon(
+                      FeatherIcons.chevronDown,
+                      color: kLightTextColor,
+                    )
+                  ],
+                ),
               ),
-            ),
+            ],
           ),
           SizedBox(height: 8),
           Row(
@@ -139,7 +141,8 @@ class RecordsSimulatorScreen extends StatelessWidget {
             ],
           ),
           SizedBox(height: kDefaultPadding),
-          Divider(color: kSubtitleTextColor),
+          Divider(color: kSubtitleTextColor, thickness: 1),
+          SizedBox(height: kDefaultPadding),
           Container(
             width: double.infinity,
             child: Column(
