@@ -19,7 +19,7 @@ class Records extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.symmetric(
           horizontal: kDefaultPadding,
-          vertical: kDefaultPadding / 2,
+          vertical: kDefaultPadding / 4,
         ),
         padding: EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
         height: 80,
@@ -55,6 +55,7 @@ class Records extends StatelessWidget {
                 SizedBox(height: 4),
                 Text(
                   'Histórico de pontos registrados',
+                  softWrap: true,
                   style: GoogleFonts.inter(
                     textStyle: TextStyle(
                       fontSize: 13,

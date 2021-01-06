@@ -3,14 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../utils/constants.dart';
 
 class CircleProgress extends StatelessWidget {
-  final double sizeCircle = 180;
-
   final double percentage;
 
   const CircleProgress(this.percentage);
 
   @override
   Widget build(BuildContext context) {
+    final double sizeCircle = MediaQuery.of(context).size.width * .45;
     return Center(
       child: Container(
         width: sizeCircle,
@@ -39,8 +38,8 @@ class CircleProgress extends StatelessWidget {
             Center(
               child: Container(
                 alignment: Alignment.center,
-                width: sizeCircle - 30,
-                height: sizeCircle - 30,
+                width: sizeCircle - 25,
+                height: sizeCircle - 25,
                 decoration: BoxDecoration(
                   color: kBackgroundColor,
                   shape: BoxShape.circle,

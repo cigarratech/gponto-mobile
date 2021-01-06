@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gponto/utils/app_routes.dart';
 import 'package:gponto/utils/constants.dart';
 
 class Settings extends StatelessWidget {
@@ -12,11 +13,13 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).pushNamed(AppRoutes.SETTINGS);
+      },
       child: Container(
         margin: EdgeInsets.symmetric(
           horizontal: kDefaultPadding,
-          vertical: kDefaultPadding / 2,
+          vertical: kDefaultPadding / 4,
         ),
         padding: EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
         height: 80,
@@ -52,6 +55,7 @@ class Settings extends StatelessWidget {
                 SizedBox(height: 4),
                 Text(
                   'Configurações de horários e jornada',
+                  softWrap: true,
                   style: GoogleFonts.inter(
                     textStyle: TextStyle(
                       fontSize: 13,

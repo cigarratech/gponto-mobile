@@ -14,7 +14,7 @@ class TotalHours extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(
         horizontal: kDefaultPadding,
-        vertical: kDefaultPadding / 2,
+        vertical: kDefaultPadding / 4,
       ),
       padding: EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
       height: 80,
@@ -50,6 +50,7 @@ class TotalHours extends StatelessWidget {
               SizedBox(height: 4),
               Text(
                 'Hora totais de trabalho',
+                softWrap: true,
                 style: GoogleFonts.inter(
                   textStyle: TextStyle(
                     fontSize: 13,

@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
           Settings(),
           Spacer(),
           BottomInformation(),
-          Spacer(),
+          Spacer()
         ],
       ),
     );
