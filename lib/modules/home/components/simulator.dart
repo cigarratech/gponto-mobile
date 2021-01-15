@@ -21,8 +21,10 @@ class Simulator extends StatelessWidget {
           horizontal: kDefaultPadding,
           vertical: kDefaultPadding / 4,
         ),
-        padding: EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
-        height: 80,
+        padding: EdgeInsets.symmetric(
+          horizontal: kDefaultPadding / 2,
+          vertical: kDefaultPadding / 2,
+        ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: Colors.white,
@@ -31,13 +33,7 @@ class Simulator extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SvgPicture.asset('assets/icons/calculator.svg'),
-            VerticalDivider(
-              color: kLightTextColor,
-              thickness: 1,
-              width: 15,
-              endIndent: 15,
-              indent: 15,
-            ),
+            SizedBox(width: 8),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +42,7 @@ class Simulator extends StatelessWidget {
                   'Simulador',
                   style: GoogleFonts.inter(
                     textStyle: TextStyle(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.w500,
                       color: kTextColor,
                     ),
@@ -58,7 +54,7 @@ class Simulator extends StatelessWidget {
                   softWrap: true,
                   style: GoogleFonts.inter(
                     textStyle: TextStyle(
-                      fontSize: 13,
+                      fontSize: 11,
                       fontWeight: FontWeight.w500,
                       color: Color(0xFF919191),
                     ),

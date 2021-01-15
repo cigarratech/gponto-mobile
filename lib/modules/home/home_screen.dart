@@ -12,7 +12,6 @@ import 'components/bottom_information.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -26,25 +25,40 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Stack(
+      body: LayoutBuilder(
+        builder: (ctx, constraints) {
+          return Column(
             children: [
-              Container(
-                height: screenSize.height * 0.14,
-                color: kPrimaryColor,
+              Expanded(
+                child: ListView(
+                  children: [
+                    Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: kPrimaryColor,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(16),
+                              bottomRight: Radius.circular(16),
+                            ),
+                          ),
+                          height: constraints.maxHeight * .15,
+                        ),
+                        CircleProgress(.5),
+                      ],
+                    ),
+                    TotalHours(),
+                    Simulator(),
+                    Records(),
+                    Settings(),
+                  ],
+                ),
               ),
-              CircleProgress(.5),
+              BottomInformation(),
+              SizedBox(height: 8),
             ],
-          ),
-          TotalHours(),
-          Simulator(),
-          Records(),
-          Settings(),
-          Spacer(),
-          BottomInformation(),
-          Spacer()
-        ],
+          );
+        },
       ),
     );
   }
