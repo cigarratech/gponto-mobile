@@ -11,121 +11,122 @@ import '../../../components/containerClipper.dart';
 class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        elevation: 0,
-      ),
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              ClipPath(
-                clipper: ContainerClipper(),
-                child: Container(
-                  decoration: BoxDecoration(color: kPrimaryColor),
-                  height: size.height * 0.55,
+      body: LayoutBuilder(
+        builder: (ctx, constraints) {
+          return Container(
+            height: constraints.maxHeight,
+            child: Stack(
+              children: [
+                ClipPath(
+                  clipper: ContainerClipper(),
+                  child: Container(
+                    decoration: BoxDecoration(color: kPrimaryColor),
+                    height: constraints.maxHeight * .7,
+                  ),
                 ),
-              ),
-              Container(
-                alignment: Alignment.center,
-                child: Column(
-                  children: [
-                    Image.asset('assets/images/clock.png'),
-                    Text(
-                      'GPonto',
-                      style: GoogleFonts.archivo(
-                        textStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 36,
-                          fontWeight: FontWeight.w500,
+                Center(
+                  child: Column(
+                    children: [
+                      Spacer(),
+                      SizedBox(height: 8),
+                      Image.asset('assets/images/clock.png'),
+                      FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text(
+                          'GPonto',
+                          style: GoogleFonts.archivo(
+                            textStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 28,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      'Gerenciando o seu tempo!',
-                      style: GoogleFonts.inter(
-                        textStyle: TextStyle(
-                          color: Color(0xFFC7F8E7),
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
+                      SizedBox(height: 8),
+                      FittedBox(
+                        fit: BoxFit.fitHeight,
+                        child: Text(
+                          'Gerenciando o seu tempo!',
+                          style: GoogleFonts.inter(
+                            textStyle: TextStyle(
+                              color: Color(0xFFC7F8E7),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Positioned(
-                top: size.height / 3.5,
-                left: 0,
-                right: 0,
-                child: Column(
-                  children: [
-                    Text(
-                      'Entrar',
-                      style: GoogleFonts.inter(
-                        textStyle: TextStyle(
-                          fontSize: 30,
-                          color: kBackgroundColor,
-                          fontWeight: FontWeight.w600,
+                      Spacer(),
+                      Text(
+                        'Entrar',
+                        style: GoogleFonts.inter(
+                          textStyle: TextStyle(
+                            fontSize: 30,
+                            color: kBackgroundColor,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
-                    Input(
-                      icon: FeatherIcons.mail,
-                      inputType: TextInputType.emailAddress,
-                      placeholder: 'E-mail',
-                    ),
-                    Input(
-                      icon: FeatherIcons.lock,
-                      passwordType: true,
-                      placeholder: 'Senha',
-                    ),
-                  ],
+                      SizedBox(height: 8),
+                      Input(
+                        icon: FeatherIcons.mail,
+                        inputType: TextInputType.emailAddress,
+                        placeholder: 'E-mail',
+                      ),
+                      SizedBox(height: 8),
+                      Input(
+                        icon: FeatherIcons.lock,
+                        passwordType: true,
+                        placeholder: 'Senha',
+                      ),
+                      Spacer(),
+                      Button(text: 'Entrar'),
+                      SizedBox(height: 16),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushNamed(AppRoutes.RECOVER_PASSWORD);
+                        },
+                        child: Text(
+                          'Esqueci minha senha',
+                          style: GoogleFonts.inter(
+                            textStyle: TextStyle(
+                              color: kPrimaryColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Spacer(),
+                      Spacer(),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(AppRoutes.SIGNUP);
+                        },
+                        child: Text(
+                          'Criar Conta',
+                          style: GoogleFonts.inter(
+                            textStyle: TextStyle(
+                              color: kSubtitleTextColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      Spacer(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Button(
-            text: 'Entrar',
-          ),
-          SizedBox(height: kDefaultPadding * 3 / 2),
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed(AppRoutes.RECOVER_PASSWORD);
-            },
-            child: Text(
-              'Esqueci minha senha',
-              style: GoogleFonts.inter(
-                textStyle: TextStyle(
-                  color: kPrimaryColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              ],
             ),
-          ),
-          Spacer(),
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed(AppRoutes.SIGNUP);
-            },
-            child: Text(
-              'Criar Conta',
-              style: GoogleFonts.inter(
-                textStyle: TextStyle(
-                  color: kSubtitleTextColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: kDefaultPadding),
-        ],
+          );
+        },
       ),
     );
   }

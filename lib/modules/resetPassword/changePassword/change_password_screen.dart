@@ -12,7 +12,6 @@ import '../../../components/containerClipper.dart';
 class ChangePasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -24,84 +23,87 @@ class ChangePasswordScreen extends StatelessWidget {
           icon: SvgPicture.asset('assets/icons/arrow-left.svg'),
         ),
       ),
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              ClipPath(
-                clipper: ContainerClipper(),
-                child: Container(
-                  decoration: BoxDecoration(color: kPrimaryColor),
-                  height: size.height * 0.65,
+      body: LayoutBuilder(
+        builder: (ctx, constraints) {
+          return Container(
+            height: constraints.maxHeight,
+            child: Stack(
+              children: [
+                ClipPath(
+                  clipper: ContainerClipper(),
+                  child: Container(
+                    decoration: BoxDecoration(color: kPrimaryColor),
+                    height: constraints.maxHeight * .7,
+                  ),
                 ),
-              ),
-              Container(
-                alignment: Alignment.center,
-                child: Column(
-                  children: [
-                    Image.asset('assets/images/clock.png'),
-                    Text(
-                      'GPonto',
-                      style: GoogleFonts.archivo(
-                        textStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 36,
-                          fontWeight: FontWeight.w500,
+                Center(
+                  child: Column(
+                    children: [
+                      Image.asset('assets/images/clock.png'),
+                      FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text(
+                          'GPonto',
+                          style: GoogleFonts.archivo(
+                            textStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 28,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      'Gerenciando o seu tempo!',
-                      style: GoogleFonts.inter(
-                        textStyle: TextStyle(
-                          color: Color(0xFFC7F8E7),
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
+                      SizedBox(height: 8),
+                      FittedBox(
+                        fit: BoxFit.fitHeight,
+                        child: Text(
+                          'Gerenciando o seu tempo!',
+                          style: GoogleFonts.inter(
+                            textStyle: TextStyle(
+                              color: Color(0xFFC7F8E7),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Positioned(
-                top: size.height / 3.5,
-                left: 0,
-                right: 0,
-                child: Column(
-                  children: [
-                    Text(
-                      'Alterar senha',
-                      style: GoogleFonts.inter(
-                        textStyle: TextStyle(
-                          fontSize: 30,
-                          color: kBackgroundColor,
-                          fontWeight: FontWeight.w600,
+                      Spacer(),
+                      Text(
+                        'Alterar senha',
+                        style: GoogleFonts.inter(
+                          textStyle: TextStyle(
+                            fontSize: 30,
+                            color: kBackgroundColor,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: kDefaultPadding),
-                    Input(
-                      icon: FeatherIcons.lock,
-                      inputType: TextInputType.emailAddress,
-                      placeholder: 'Nova senha',
-                    ),
-                    Input(
-                      icon: FeatherIcons.lock,
-                      inputType: TextInputType.emailAddress,
-                      placeholder: 'Confirmar senha',
-                    ),
-                    SizedBox(height: kDefaultPadding * 3 / 2),
-                    Button(
-                      text: 'Validar',
-                    ),
-                  ],
+                      SizedBox(height: 8),
+                      Input(
+                        icon: FeatherIcons.lock,
+                        passwordType: true,
+                        placeholder: 'Nova senha',
+                      ),
+                      SizedBox(height: 8),
+                      Input(
+                        icon: FeatherIcons.lock,
+                        passwordType: true,
+                        placeholder: 'Confirmar senha',
+                      ),
+                      Spacer(),
+                      Button(text: 'Alterar'),
+                      SizedBox(height: 16),
+                      Spacer(),
+                      Spacer(),
+                      Spacer(),
+                      Spacer(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Spacer(),
-        ],
+              ],
+            ),
+          );
+        },
       ),
     );
   }

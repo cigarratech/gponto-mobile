@@ -19,10 +19,8 @@ class Input extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
-      alignment: Alignment.center,
-      margin: EdgeInsets.symmetric(
-          horizontal: kDefaultPadding, vertical: kDefaultPadding / 2),
+      alignment: Alignment.topCenter,
+      margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),
@@ -40,13 +38,15 @@ class Input extends StatelessWidget {
         keyboardType: inputType,
         decoration: InputDecoration(
           prefixIcon: Icon(icon, color: kLightTextColor),
+
+          // icon: Icon(icon, color: kLightTextColor),
           focusedBorder: InputBorder.none,
           enabledBorder: InputBorder.none,
           hintText: placeholder,
           hintStyle: GoogleFonts.inter(
             textStyle: TextStyle(
               color: kLightTextColor,
-              fontSize: 18,
+              fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
           ),

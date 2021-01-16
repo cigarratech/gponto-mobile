@@ -6,8 +6,6 @@ import 'package:gponto/utils/constants.dart';
 class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Size sizeScreen = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -168,29 +166,6 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
           Divider(),
-          Spacer(),
-          Center(
-            child: FlatButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              height: 50,
-              color: kPrimaryColor,
-              minWidth: sizeScreen.width * 0.8,
-              onPressed: () {},
-              child: Text(
-                'Salvar',
-                style: GoogleFonts.inter(
-                  textStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Spacer(),
         ],
       ),
     );

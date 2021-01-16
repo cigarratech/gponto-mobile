@@ -22,13 +22,13 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        systemNavigationBarColor: kPrimaryColor,
-        statusBarColor: kPrimaryColor,
-        statusBarBrightness: Brightness.dark,
-      ),
-    );
+    // SystemChrome.setSystemUIOverlayStyle(
+    //   SystemUiOverlayStyle(
+    //     // systemNavigationBarColor: kPrimaryColor,
+    //     statusBarColor: kPrimaryColor,
+    //     statusBarBrightness: Brightness.dark,
+    //   ),
+    // );
 
     return GestureDetector(
       onTap: () {
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         routes: {
-          AppRoutes.HOME: (ctx) => HomeScreen(),
+          AppRoutes.HOME: (ctx) => SignInScreen(),
           AppRoutes.SIGNIN: (ctx) => SignInScreen(),
           AppRoutes.SIGNUP: (ctx) => SignUpScreen(),
           AppRoutes.RECOVER_PASSWORD: (ctx) => RecoverPasswordScreen(),
