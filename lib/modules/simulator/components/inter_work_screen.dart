@@ -1,15 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:gponto/utils/constants.dart';
 
-class InterWordScreen extends StatelessWidget {
+class InterWordScreen extends StatefulWidget {
   const InterWordScreen({
     Key key,
   }) : super(key: key);
 
   @override
+  _InterWordScreenState createState() => _InterWordScreenState();
+}
+
+class _InterWordScreenState extends State<InterWordScreen> {
+  TimeOfDay exitHour;
+  DateTime selectData;
+
+  @override
   Widget build(BuildContext context) {
     final Size sizeScreen = MediaQuery.of(context).size;
+
+    Future<void> _selectExitHour() async {
+      final selectedHour = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.now(),
+      );
+      if (selectedHour == null) return;
+      setState(() {
+        exitHour = selectedHour;
+      });
+    }
+
+    Future<void> _selectData() async {
+      final selectedData = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2100),
+      );
+      if (selectedData == null) return;
+
+      setState(() {
+        selectData = selectedData;
+      });
+    }
 
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -30,21 +64,25 @@ class InterWordScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 4),
-          Container(
-            height: 50,
-            padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Center(
-              child: Text(
-                '22/01/2021',
-                style: GoogleFonts.inter(
-                  textStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: kTextColor,
+          InkWell(
+            onTap: _selectData,
+            child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Center(
+                child: Text(
+                  selectData != null
+                      ? DateFormat("dd/MM/yyyy").format(selectData)
+                      : DateFormat("dd/MM/yyyy").format(DateTime.now()),
+                  style: GoogleFonts.inter(
+                    textStyle: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: kTextColor,
+                    ),
                   ),
                 ),
               ),
@@ -65,20 +103,25 @@ class InterWordScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 4),
-              Container(
-                height: 50,
-                width: sizeScreen.width / 2,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Center(
-                  child: Text(
-                    '00:00',
-                    style: GoogleFonts.inter(
-                      color: kTextColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
+              InkWell(
+                onTap: _selectExitHour,
+                child: Container(
+                  height: 50,
+                  width: sizeScreen.width / 2,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Center(
+                    child: Text(
+                      exitHour != null
+                          ? '${exitHour.format(context)}'
+                          : TimeOfDay.now().format(context),
+                      style: GoogleFonts.inter(
+                        color: kTextColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),
@@ -117,7 +160,7 @@ class InterWordScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Data/horas',
+                      'Data/hora',
                       style: GoogleFonts.inter(
                         textStyle: TextStyle(
                           color: kSubtitleTextColor,

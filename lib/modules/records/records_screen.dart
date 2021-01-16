@@ -30,13 +30,18 @@ class RecordsScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: 20,
         itemBuilder: (cxt, i) {
-          return Column(
-            children: [
-              RecordItem(),
-              Divider(
-                height: 1,
-              ),
-            ],
+          return Dismissible(
+            direction: DismissDirection.endToStart,
+            onDismissed: (_) {},
+            key: ValueKey(i),
+            child: Column(
+              children: [
+                RecordItem(),
+                Divider(
+                  height: 1,
+                ),
+              ],
+            ),
           );
         },
       ),

@@ -3,14 +3,69 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gponto/utils/constants.dart';
 
-class RecordsSimulatorScreen extends StatelessWidget {
+class RecordsSimulatorScreen extends StatefulWidget {
   const RecordsSimulatorScreen({
     Key key,
   }) : super(key: key);
 
   @override
+  _RecordsSimulatorScreenState createState() => _RecordsSimulatorScreenState();
+}
+
+class _RecordsSimulatorScreenState extends State<RecordsSimulatorScreen> {
+  TimeOfDay enterHour;
+  TimeOfDay exitHour;
+
+  @override
   Widget build(BuildContext context) {
     final Size sizeScreen = MediaQuery.of(context).size;
+
+    Future<void> _selectEnterHour() async {
+      final selectedHour = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.now(),
+      );
+      if (selectedHour == null) return;
+
+      setState(() {
+        enterHour = selectedHour;
+      });
+    }
+
+    Future<void> _selectExitHour() async {
+      final selectedHour = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.now(),
+      );
+      if (selectedHour == null) return;
+      setState(() {
+        exitHour = selectedHour;
+      });
+    }
+
+    void _openModal() async {
+      await showModalBottomSheet(
+        context: context,
+        builder: (ctx) {
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Container(
+              height: sizeScreen.height * .60,
+              child: Text(
+                'Selecinar escala',
+                style: GoogleFonts.inter(
+                  textStyle: TextStyle(
+                    fontSize: 16,
+                    color: kTextColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      );
+    }
 
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -33,31 +88,34 @@ class RecordsSimulatorScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 4),
-              Container(
-                height: 50,
-                padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Row(
-                  children: [
-                    Text(
-                      '08:48 - 1h Intervalo',
-                      style: GoogleFonts.inter(
-                        textStyle: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: kTextColor,
+              InkWell(
+                onTap: _openModal,
+                child: Container(
+                  height: 50,
+                  padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        '08:48 - 1h Intervalo',
+                        style: GoogleFonts.inter(
+                          textStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: kTextColor,
+                          ),
                         ),
                       ),
-                    ),
-                    Spacer(),
-                    Icon(
-                      FeatherIcons.chevronDown,
-                      color: kLightTextColor,
-                    )
-                  ],
+                      Spacer(),
+                      Icon(
+                        FeatherIcons.chevronDown,
+                        color: kLightTextColor,
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -80,20 +138,25 @@ class RecordsSimulatorScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 4),
-                    Container(
-                      height: 50,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          '14:00',
-                          style: GoogleFonts.inter(
-                            color: kTextColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
+                    InkWell(
+                      onTap: _selectEnterHour,
+                      child: Container(
+                        height: 50,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Center(
+                          child: Text(
+                            enterHour != null
+                                ? '${enterHour.format(context)}'
+                                : TimeOfDay.now().format(context),
+                            style: GoogleFonts.inter(
+                              color: kTextColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
@@ -117,24 +180,29 @@ class RecordsSimulatorScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 4),
-                    Container(
-                      height: 50,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          '14:00',
-                          style: GoogleFonts.inter(
-                            color: kTextColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
+                    InkWell(
+                      onTap: _selectExitHour,
+                      child: Container(
+                        height: 50,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Center(
+                          child: Text(
+                            exitHour != null
+                                ? '${exitHour.format(context)}'
+                                : TimeOfDay.now().format(context),
+                            style: GoogleFonts.inter(
+                              color: kTextColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),

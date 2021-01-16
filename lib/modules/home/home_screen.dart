@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                               bottomRight: Radius.circular(16),
                             ),
                           ),
-                          height: constraints.maxHeight * .15,
+                          height: constraints.maxHeight * .20,
                         ),
                         CircleProgress(.5),
                       ],

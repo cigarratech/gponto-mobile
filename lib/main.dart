@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:gponto/utils/constants.dart';
 
@@ -22,14 +21,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // SystemChrome.setSystemUIOverlayStyle(
-    //   SystemUiOverlayStyle(
-    //     // systemNavigationBarColor: kPrimaryColor,
-    //     statusBarColor: kPrimaryColor,
-    //     statusBarBrightness: Brightness.dark,
-    //   ),
-    // );
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).requestFocus(new FocusNode());
@@ -43,7 +34,7 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         routes: {
-          AppRoutes.HOME: (ctx) => SignInScreen(),
+          AppRoutes.HOME: (ctx) => HomeScreen(),
           AppRoutes.SIGNIN: (ctx) => SignInScreen(),
           AppRoutes.SIGNUP: (ctx) => SignUpScreen(),
           AppRoutes.RECOVER_PASSWORD: (ctx) => RecoverPasswordScreen(),
